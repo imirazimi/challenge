@@ -1,0 +1,14 @@
+---
+type: yml
+
+http_server:
+  port: 3001
+
+storage:
+  base: "data"
+  laptop: "data/laptop.json"
+
+openai:
+  key: "<put key here>"
+  model: "gpt-4o-mini"
+  role: "user"

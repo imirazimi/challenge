@@ -1,0 +1,100 @@
+definitions:
+  manager.GetAllLaptopResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/manager.LaptopDetail'
+        type: array
+    type: object
+  manager.IntegrateLaptopRequest:
+    properties:
+      data:
+        items:
+          type: string
+        type: array
+    type: object
+  manager.IntegrateLaptopResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/manager.LaptopDetail'
+        type: array
+    type: object
+  manager.LaptopDetail:
+    properties:
+      battery_status:
+        description: "No"
+        type: string
+      brand:
+        description: Dell
+        type: string
+      model:
+        description: Inspiron
+        type: string
+      processor:
+        description: Intel Core i7-10510U
+        type: string
+      ram_capacity:
+        description: 16GB
+        type: string
+      ram_type:
+        description: DDR4
+        type: string
+      storage_capacity:
+        description: 512GB
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /manager/laptops:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/manager.GetAllLaptopResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: GetAll Laptop
+      tags:
+      - manager Laptops
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Integrate Laptop
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/manager.IntegrateLaptopRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/manager.IntegrateLaptopResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Integrate Laptop
+      tags:
+      - manager Laptops
+swagger: "2.0"

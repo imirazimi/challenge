@@ -1,0 +1,153 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/manager/laptops": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "manager Laptops"
+                ],
+                "summary": "GetAll Laptop",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/manager.GetAllLaptopResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "manager Laptops"
+                ],
+                "summary": "Integrate Laptop",
+                "parameters": [
+                    {
+                        "description": "Integrate Laptop",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/manager.IntegrateLaptopRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/manager.IntegrateLaptopResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "manager.GetAllLaptopResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/manager.LaptopDetail"
+                    }
+                }
+            }
+        },
+        "manager.IntegrateLaptopRequest": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "manager.IntegrateLaptopResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/manager.LaptopDetail"
+                    }
+                }
+            }
+        },
+        "manager.LaptopDetail": {
+            "type": "object",
+            "properties": {
+                "battery_status": {
+                    "description": "No",
+                    "type": "string"
+                },
+                "brand": {
+                    "description": "Dell",
+                    "type": "string"
+                },
+                "model": {
+                    "description": "Inspiron",
+                    "type": "string"
+                },
+                "processor": {
+                    "description": "Intel Core i7-10510U",
+                    "type": "string"
+                },
+                "ram_capacity": {
+                    "description": "16GB",
+                    "type": "string"
+                },
+                "ram_type": {
+                    "description": "DDR4",
+                    "type": "string"
+                },
+                "storage_capacity": {
+                    "description": "512GB",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
