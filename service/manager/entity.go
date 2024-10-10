@@ -1,5 +1,20 @@
 package manager
 
+const (
+	LaptopDetailFormat = `
+[
+	{
+		"brand":"<if brand name doesn't exist then explore brand based on model name>",
+		"model":"<just return model name without brand name>",
+		"processor":"<explore and find processor brand if not exists>",
+		"ram_capacity":"<just extract capacity without decimal part and with unit>",
+		"ram_type":"<if data is empty, then explore and find ram type based on processor model and return Just 'DDR4' or 'DDR3'>",
+		"storage_capacity":"<just extract capacity without decimal part and with unit>",
+		"battery_status":"<if data is empty return Yes.if battery is corrupted, damaged or unused return No otherwise Yes>"
+	}
+]`
+)
+
 type LaptopDetail struct {
 	Brand           string `json:"brand"`            // Dell
 	Model           string `json:"model"`            // Inspiron

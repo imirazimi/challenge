@@ -56,8 +56,7 @@ func (s Service) IntegrateLaptop(ctx context.Context, req IntegrateLaptopRequest
 	}
 
 	news := []LaptopDetail{}
-	format := `[{"brand":"A","model":"B","processor":"C","ram_capacity":"D","ram_type":"E","storage_capacity":"F"," battery_status":"G"}]`
-	newsJSON, err := s.agent.JSON(ctx, newsKeys, format)
+	newsJSON, err := s.agent.JSON(ctx, newsKeys, LaptopDetailFormat)
 	if err != nil {
 		return IntegrateLaptopResponse{}, err
 	}

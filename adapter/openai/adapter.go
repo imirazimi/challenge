@@ -26,7 +26,7 @@ func (a *Adapter) JSON(ctx context.Context, data []string, format string) (strin
 		inputs += d + "\n"
 	}
 	prompt := `You are given a sample input data and I need you to do the same to process and standardize the input data into JSON format.
-Sample standard format:` + format + `"note that just output only the raw JSON with given input order and without any prettier and don't put anything for empty values!"
+Sample standard format:` + format + `"note that just output only the raw JSON with given input order and without any prettier and use your information to complete empty values!"
 inputs:` + inputs
 
 	resp, err := a.client.CreateChatCompletion(
